@@ -99,7 +99,7 @@ html {
   background-image: url("../images/home.jpg");
   background-size: cover;
   background-attachment: scroll;
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
   background-position: center center;
 }
 .support-fixed.front #top {
@@ -110,7 +110,7 @@ html {
   background-image: url("../images/home.jpg");
   background-size: cover;
   background-attachment: scroll;
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
   background-position: center top;
 }
 .support-fixed.not-front #top {
@@ -153,11 +153,12 @@ header {
   text-align: center;
 }
 .navbar_ .navbar-toggle {
+  display: none;
   background: #161616;
   border: none;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  margin-right: 0;
+  margin: 4px 0;
+  padding: 9px 10px;
+  z-index: 32;
 }
 .navbar_ .navbar-toggle:hover,
 .navbar_ .navbar-toggle:focus {
@@ -165,6 +166,10 @@ header {
 }
 .navbar_ .navbar-toggle .icon-bar {
   background: #fff;
+  width: 22px;
+  height: 2px;
+  display: block;
+  margin: 4px 0;
 }
 .navbar-collapse_ {
   padding-left: 0;
@@ -821,11 +826,12 @@ header {
 }
 
 .front-slider {
-  position: absolute;
+  position: relative;
   left: 0;
   top: 50%;
   width: 100%;
   margin-top: -80px;
+  z-index: 5;
 }
 
 .subpage-slider {
@@ -846,7 +852,7 @@ header {
   top: 50%;
   margin-top: -40px;
   background: rgba(0, 0, 0, 0.2);
-  z-index: 2;
+  z-index: 10;
   transition: background 0.3s ease-out;
 }
 .mission_next {
@@ -989,11 +995,6 @@ header {
   color: #fff;
   background: #000;
   border-color: #000;
-}
-.macs img {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
 }
 
 /* ============================= services ====================== */
@@ -1753,7 +1754,7 @@ header {
   position: absolute;
   background-size: cover;
   background-attachment: scroll;
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
   background-position: center center;
 }
 .parallax-bg.bg-fixed {
@@ -1835,7 +1836,6 @@ header {
 #toTop:focus {
   outline: none;
 }
-
 /* ============================= main layout ====================== */
 .title1 {
   text-align: center;
@@ -1938,7 +1938,8 @@ h5 {
   position: relative;
   border: 3px solid #fff;
   letter-spacing: 1px;
-  z-index: 10;
+  z-index: 20;
+  touch-action: manipulation;
 }
 .btn-default.btn0:hover {
   color: #000;
@@ -1961,7 +1962,8 @@ h5 {
   position: relative;
   border: 2px solid #fff;
   letter-spacing: 1px;
-  z-index: 10;
+  z-index: 20;
+  touch-action: manipulation;
 }
 .btn-default.btn1:hover {
   color: #000;
@@ -1983,7 +1985,8 @@ h5 {
   background: url(../images/btn2.png) right center no-repeat;
   position: relative;
   letter-spacing: 1px;
-  z-index: 10;
+  z-index: 20;
+  touch-action: manipulation;
 }
 .btn-default.btn2:hover {
   color: #000;
@@ -2006,7 +2009,8 @@ h5 {
   position: relative;
   border: 2px solid #4c4b4b;
   letter-spacing: 1px;
-  z-index: 10;
+  z-index: 20;
+  touch-action: manipulation;
 }
 .btn-default.btn3:hover {
   color: #fff;
@@ -2158,6 +2162,8 @@ h5 {
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: all 0.3s ease-out;
+  z-index: 20;
+  touch-action: manipulation;
 }
 .btn-default.btn-cf-submit:hover {
   background: #232323;
@@ -2230,6 +2236,8 @@ h5 {
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: all 0.3s ease-out;
+  z-index: 20;
+  touch-action: manipulation;
 }
 .btn-default.btn-cf-submit3:hover {
   background: #000;
@@ -2325,6 +2333,10 @@ h5 {
     margin-bottom: 0;
     padding-top: 10px;
   }
+  .navbar_ .navbar-toggle {
+    display: block !important;
+    z-index: 32;
+  }
   .navbar-collapse_ {
     clear: both;
     margin-left: 0;
@@ -2335,6 +2347,7 @@ h5 {
     width: 100%;
     left: 0;
     top: 100%;
+    z-index: 31;
   }
   .navbar_ .nav {
     display: block;
@@ -2446,13 +2459,37 @@ h5 {
     font-size: 9px;
     padding: 6px 15px;
   }
+  #ajax-contact-form .form-control {
+    font-size: 12px;
+    height: 34px;
+    padding: 6px 10px;
+  }
+  #ajax-contact-form textarea.form-control {
+    height: 100px;
+  }
   #ajax-contact-form .form-group.capthca input,
   #ajax-contact-form .form-group.img img {
     width: 140px;
   }
+  #ajax-contact-form .btn-cf-submit {
+    font-size: 10px;
+    padding: 8px 15px;
+  }
+  #ajax-contact-form3 .form-control {
+    font-size: 12px;
+    height: 34px;
+    padding: 6px 10px;
+  }
+  #ajax-contact-form3 textarea.form-control {
+    height: 100px;
+  }
   #ajax-contact-form3 .form-group.capthca input,
   #ajax-contact-form3 .form-group.img img {
     width: 140px;
+  }
+  #ajax-contact-form3 .btn-cf-submit3 {
+    font-size: 9px;
+    padding: 6px 12px;
   }
 }
 @media (max-width: 480px) {
@@ -2481,6 +2518,16 @@ h5 {
   }
   .bot2 {
     padding: 8px 0;
+  }
+  #ajax-contact-form .form-control,
+  #ajax-contact-form3 .form-control {
+    font-size: 11px;
+    height: 32px;
+    padding: 5px 8px;
+  }
+  #ajax-contact-form textarea.form-control,
+  #ajax-contact-form3 textarea.form-control {
+    height: 80px;
   }
 }
 #form-errors {
