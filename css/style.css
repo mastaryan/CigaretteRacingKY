@@ -46,6 +46,8 @@ a {
   color: #4c4b4b;
   text-decoration: underline;
   outline: none;
+  z-index: 1;
+  position: relative;
 }
 a:hover {
   color: #4c4b4b;
@@ -60,6 +62,7 @@ body {
   line-height: 1.6666667;
   min-width: 320px;
   height: 100%;
+  overflow-x: hidden;
 }
 
 html {
@@ -69,6 +72,8 @@ html {
 .container {
   position: relative;
   min-width: 320px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 #main {
@@ -119,8 +124,10 @@ html {
 }
 
 .is-sticky #top2 {
-  background: #000;
   background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
 .top2 {
@@ -129,9 +136,113 @@ html {
 }
 
 header {
-  float: left;
   position: relative;
   z-index: 31;
+  width: 100%;
+}
+
+/* ============================= navigation ====================== */
+.navbar_ {
+  margin: 0;
+  padding-top: 20px;
+  background: none;
+  border: none;
+  position: relative;
+  z-index: 30;
+  min-height: 0;
+  text-align: center;
+}
+.navbar_ .navbar-toggle {
+  background: #161616;
+  border: none;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-right: 0;
+}
+.navbar_ .navbar-toggle:hover,
+.navbar_ .navbar-toggle:focus {
+  background: #303030;
+}
+.navbar_ .navbar-toggle .icon-bar {
+  background: #fff;
+}
+.navbar-collapse_ {
+  padding-left: 0;
+  padding-right: 0;
+  border: none;
+}
+.navbar_ .nav {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: top;
+}
+.navbar_ .nav > li {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  margin-left: 30px;
+}
+.navbar_ .nav > li:first-child {
+  margin-left: 0;
+}
+.navbar_ .nav > li > a {
+  display: block;
+  text-decoration: none;
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 20px;
+  color: #fff;
+  padding: 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-out;
+}
+.navbar_ .nav > li > a:hover,
+.navbar_ .nav > li > a:focus,
+.navbar_ .nav > li.active > a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.sub-menu ul {
+  position: absolute;
+  display: none;
+  left: 0;
+  top: 100%;
+  list-style: none;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  background: #3e3e40;
+  text-align: left;
+}
+.sub-menu li {
+  margin: 0;
+  position: relative;
+  display: block;
+  border-top: 1px solid #515152;
+}
+.sub-menu li:first-child {
+  border-top: none;
+}
+.sub-menu li a {
+  display: block;
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 20px;
+  color: #fff;
+  text-decoration: none;
+  padding: 3px 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-out;
+}
+.sub-menu li a:hover {
+  color: #000;
+  background: #fff;
 }
 
 /* ============================= content ====================== */
@@ -142,10 +253,9 @@ header {
   font-weight: 700;
   text-transform: uppercase;
 }
-
 .breadcrumbs1 {
   padding: 0;
-  margin-top: 0px;
+  margin-top: 0;
   line-height: 20px;
   color: #232323;
   font-size: 11px;
@@ -156,7 +266,6 @@ header {
   text-decoration: none;
 }
 .breadcrumbs1 a:hover {
-  color: #232323;
   text-decoration: underline;
 }
 .breadcrumbs1 span {
@@ -168,14 +277,14 @@ header {
 #google_map {
   position: relative;
   width: 100%;
-  height: 570px;
+  height: 400px;
 }
 
 /* ============================= blog ====================== */
 .content-part {
 }
 .post {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   border: 1px solid #dedede;
   border-radius: 3px;
 }
@@ -191,7 +300,7 @@ header {
 .post .post-image a img {
   width: 100%;
   border-radius: 3px 3px 0 0;
-  transition: all 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
 }
 .post .post-image a:hover img {
   opacity: 0.45;
@@ -205,7 +314,7 @@ header {
   height: 100%;
   background: url(../images/zoom1.png) center center no-repeat;
   opacity: 0;
-  transition: all 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
 }
 .post .post-image a:hover em {
   opacity: 1;
@@ -232,9 +341,9 @@ header {
 }
 .post .post-story .post-story-info {
   text-align: center;
-  padding: 0 20px 25px;
+  padding: 0 15px 20px;
   background: url(../images/kand5.png) center bottom no-repeat;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .post .post-story .post-story-info a {
   display: inline-block;
@@ -266,31 +375,31 @@ header {
   background-image: url(../images/li_st2_over.png);
 }
 .post .post-story .post-story-body {
-  padding: 0 20px;
+  padding: 0 15px;
 }
 .post .post-story .post-story-link {
   text-align: right;
-  padding: 0 20px 20px;
+  padding: 0 15px 15px;
 }
 
 .post .post-tags {
-  padding: 20px;
+  padding: 15px;
 }
 
 .author-block {
-  padding: 20px;
+  padding: 15px;
 }
 .author-block .title {
   font-family: "Montserrat";
-  font-size: 16px;
+  font-size: 14px;
   color: #232323;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 .author-block figure {
   float: left;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 .author-block figure img {
   border: 2px solid #000;
@@ -309,26 +418,26 @@ header {
   letter-spacing: 2px;
 }
 .author-block .caption .txt2 {
-  font-size: 14px;
+  font-size: 12px;
   font-style: italic;
 }
 
 .idea-block {
-  padding: 20px;
+  padding: 15px;
   text-align: center;
 }
 .idea-block .txt1 {
   font-family: "Montserrat";
-  font-size: 27px;
-  letter-spacing: 3px;
+  font-size: 22px;
+  letter-spacing: 2px;
   font-weight: 700;
   text-transform: uppercase;
   color: #232323;
 }
 .idea-block .txt2 {
-  font-size: 17px;
+  font-size: 14px;
   color: #4c4b4b;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 .post-comments {
@@ -336,21 +445,21 @@ header {
   font-weight: 700;
   text-transform: uppercase;
   color: #232323;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 2px;
-  padding: 20px;
+  padding: 15px;
 }
 
 .comment-block {
-  margin-bottom: 20px;
-  padding: 20px;
+  margin-bottom: 15px;
+  padding: 15px;
 }
 .comment-block.left1 {
-  margin-left: 150px;
+  margin-left: 100px;
 }
 .comment-block figure {
   float: left;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 .comment-block figure img {
   border: 1px solid #504f4f;
@@ -375,23 +484,23 @@ header {
   letter-spacing: 2px;
 }
 .comment-block .caption .top .txt2 {
-  font-size: 14px;
+  font-size: 12px;
 }
 .comment-block .caption .top .top_right {
   float: right;
 }
 
 .live-comment {
-  padding: 20px;
+  padding: 15px;
 }
 .live-comment .live-comment-title {
   font-family: "Montserrat";
   font-weight: 700;
   text-transform: uppercase;
   color: #232323;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 2px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 
 .prev_next {
@@ -440,7 +549,7 @@ header {
 .pager li > a {
   border: none;
   padding: 3px;
-  border-radius: 0px;
+  border-radius: 0;
   background: #fff;
   color: #4c4b4b;
   text-align: center;
@@ -465,13 +574,13 @@ header {
 .sidebar-part {
 }
 .sidebar-block {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   position: relative;
 }
 .sidebar-block .sidebar-block-title {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-family: "Montserrat";
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1;
   color: #232323;
   font-weight: 700;
@@ -499,13 +608,12 @@ header {
   color: #b4b4b4;
   text-decoration: none;
   display: block;
-  padding: 7px 0px 7px 20px;
+  padding: 7px 0 7px 20px;
   background: url(../images/li_st1.png) left center no-repeat;
   transition: all 0.3s ease-out;
 }
 .ul1 > li a:hover {
   color: #000;
-  text-decoration: none;
   background-image: url(../images/li_st1_over.png);
 }
 
@@ -531,7 +639,7 @@ header {
 .recent li a figure img {
   position: relative;
   border-radius: 3px;
-  transition: all 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
 }
 .recent li a:hover figure img {
   opacity: 0.2;
@@ -544,16 +652,16 @@ header {
   height: 100%;
   background: url(../images/zoom2.png) center center no-repeat;
   opacity: 0;
-  transition: all 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
 }
 .recent li a:hover figure em {
   opacity: 1;
 }
 
 .latest {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   border-bottom: 1px solid #f2f2f2;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 .latest a {
   display: block;
@@ -562,7 +670,7 @@ header {
 .latest a .txt1 {
   color: #4c4b4b;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 7px;
   font-style: italic;
   padding-left: 15px;
@@ -570,8 +678,8 @@ header {
 }
 .latest a .txt2 {
   color: #999999;
-  font-size: 13px;
-  transition: all 0.3s ease-out;
+  font-size: 12px;
+  transition: color 0.3s ease-out;
 }
 .latest a:hover .txt2 {
   color: #000;
@@ -586,17 +694,17 @@ header {
 }
 .tags li {
   display: inline-block;
-  margin: 0 5px 5px 0px;
+  margin: 0 5px 5px 0;
   float: left;
 }
 .tags li a {
   display: inline-block;
   background: #fff;
   border: 2px solid #4c4b4b;
-  padding: 9px 12px;
+  padding: 7px 10px;
   font-weight: 700;
   color: #4c4b4b;
-  border-radius: 0px;
+  border-radius: 0;
   text-decoration: none;
   font-size: 10px;
   font-family: "Montserrat";
@@ -611,10 +719,10 @@ header {
 }
 
 .feed {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   border-bottom: 1px solid #f2f2f2;
-  padding-bottom: 20px;
-  padding-left: 50px;
+  padding-bottom: 15px;
+  padding-left: 40px;
   background: url(../images/feed.png) left top no-repeat;
 }
 .feed a {
@@ -623,16 +731,16 @@ header {
 }
 .feed a .txt1 {
   color: #999999;
-  font-size: 16px;
-  margin-bottom: 0px;
-  transition: all 0.3s ease-out;
+  font-size: 14px;
+  margin-bottom: 0;
+  transition: color 0.3s ease-out;
 }
 .feed a:hover .txt2 {
   color: #000;
 }
 .feed a .txt2 {
   color: #000;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .counters {
@@ -651,7 +759,7 @@ header {
   display: block;
   text-decoration: none;
   border: 2px solid transparent;
-  padding: 15px 10px;
+  padding: 10px;
 }
 .counters li a:hover {
   border-color: #000;
@@ -659,7 +767,7 @@ header {
 .counters li a figure {
   float: left;
   color: #4c4b4b;
-  font-size: 35px;
+  font-size: 30px;
   line-height: 1;
   padding-top: 4px;
 }
@@ -683,32 +791,32 @@ header {
   color: #000;
 }
 .counters li a .caption .txt1 {
-  font-size: 15px;
+  font-size: 14px;
 }
 .counters li a .caption .txt2 {
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .m {
   display: block;
   font-family: "Montserrat";
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   color: #35373e;
-  line-height: 3;
-  padding: 20px 0 25px;
-  margin: 0 0 25px;
+  line-height: 2;
+  padding: 15px 0 20px;
+  margin: 0 0 20px;
   position: relative;
   text-transform: uppercase;
   background: url(../images/kand1.png) center bottom no-repeat;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
 }
 /* ============================= blog end ====================== */
 
 #content {
   position: relative;
-  padding-top: 30px;
-  padding-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 30px;
   background: #fff;
 }
 
@@ -717,37 +825,34 @@ header {
   left: 0;
   top: 50%;
   width: 100%;
-  margin-top: -100px;
+  margin-top: -80px;
 }
 
 .subpage-slider {
   position: relative;
-  height: 230px;
+  height: 200px;
 }
 
 /* ============================= front slider ====================== */
 #mission {
 }
-
 .mission_prev,
 .mission_next {
   display: block;
   width: 40px;
-  height: 100px;
+  height: 80px;
   position: absolute;
   left: 0;
   top: 50%;
-  margin-top: -50px;
-  background: #000;
+  margin-top: -40px;
   background: rgba(0, 0, 0, 0.2);
   z-index: 2;
-  transition: all 0.3s ease-out;
+  transition: background 0.3s ease-out;
 }
 .mission_next {
   left: auto;
   right: 0;
 }
-
 .mission_prev:after,
 .mission_next:after {
   content: "";
@@ -759,12 +864,10 @@ header {
 .mission_next:after {
   background: url(../images/next.png) center center no-repeat;
 }
-
 .mission_prev:hover,
 .mission_next:hover {
   background: #000;
 }
-
 #mission .carousel-box {
   position: relative;
 }
@@ -779,7 +882,6 @@ header {
   overflow: visible;
   margin: 0;
   padding: 0;
-  margin-right: 0px;
 }
 #mission .caroufredsel_wrapper {
   padding: 0;
@@ -793,12 +895,10 @@ header {
 #mission .carousel-box ul li {
   float: left;
   display: inline-block;
-  padding: 0px 0px 0px 0px;
+  padding: 0;
   position: relative;
   width: 100%;
-  padding-right: 0px;
 }
-
 .mission {
 }
 .mission .mission_inner {
@@ -807,30 +907,28 @@ header {
 }
 .mission .mission_inner .txt1 {
   font-family: "Montserrat";
-  font-size: 60px;
+  font-size: 48px;
   font-weight: 700;
 }
 .mission .mission_inner .txt2 {
   font-family: "Amiri";
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   font-style: italic;
 }
 .mission .mission_inner .txt3 {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 /* ============================= front slider end ====================== */
-
 #about {
   position: relative;
   background: #fff;
-  padding: 50px 0 50px;
+  padding: 40px 0;
 }
-
 .about1 {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 .about1 a {
   display: block;
@@ -839,12 +937,12 @@ header {
 }
 .about1 a .c1 {
   display: inline-block;
-  width: 92px;
-  height: 92px;
+  width: 80px;
+  height: 80px;
   background: #fff;
   border: 1px solid #d8d8d8;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   transition: all 0.3s ease-out;
 }
 .about1 a:hover .c1 {
@@ -853,9 +951,9 @@ header {
 }
 .about1 a .c1 i {
   color: #999999;
-  font-size: 30px;
-  line-height: 90px;
-  transition: all 0.3s ease-out;
+  font-size: 25px;
+  line-height: 80px;
+  transition: color 0.3s ease-out;
 }
 .about1 a:hover .c1 i {
   color: #fff;
@@ -867,10 +965,11 @@ header {
   letter-spacing: 1px;
   background: url(../images/kand2.png) center bottom no-repeat;
   padding-bottom: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
-.about1 a .txt2, .about1 .txt2 {
-  margin-bottom: 20px;
+.about1 .txt2, .about1 a .txt2 {
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 .about1 a .txt3 {
   display: inline-block;
@@ -882,7 +981,7 @@ header {
   text-transform: uppercase;
   background: #fff;
   border: 1px solid #e8e8e8;
-  padding: 13px 20px;
+  padding: 10px 15px;
   margin-bottom: 10px;
   transition: all 0.3s ease-out;
 }
@@ -891,20 +990,18 @@ header {
   background: #000;
   border-color: #000;
 }
-
-.macs {
-}
 .macs img {
   margin-left: auto;
   margin-right: auto;
+  max-width: 100%;
 }
 
+/* ============================= services ====================== */
 #services {
   position: relative;
   background: #f7f8f9;
-  padding: 80px 0 80px;
+  padding: 60px 0;
 }
-
 #services2_wrapper {
   position: relative;
   background: #fff;
@@ -922,7 +1019,7 @@ header {
   width: 60%;
 }
 #services2 .left_box {
-  padding: 70px 50px;
+  padding: 50px 30px;
 }
 #services2 .right_box_wrapper {
   position: relative;
@@ -932,10 +1029,9 @@ header {
   background: url(http://placehold.it/782x620) center center no-repeat;
   background-size: cover;
 }
-
 .services2 {
   position: relative;
-  padding: 20px 0px 20px 70px;
+  padding: 15px 0 15px 60px;
 }
 .services2:before {
   content: "";
@@ -945,7 +1041,7 @@ header {
   background: url(../images/vl1.png) 0 0 no-repeat;
   background-size: 100% 100%;
   position: absolute;
-  left: -15px;
+  left: -10px;
   top: 0;
 }
 .services2:after {
@@ -968,40 +1064,40 @@ header {
 .services2 .ic1 {
   position: absolute;
   left: 0;
-  top: 20px;
+  top: 15px;
 }
 .services2 .ic1 i {
   color: #35373e;
-  font-size: 40px;
+  font-size: 35px;
   line-height: 1;
 }
 .services2 .txt1 {
   font-family: "Montserrat";
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12px;
   color: #35373e;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding-bottom: 25px;
-  margin-bottom: 25px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
   background: url(../images/kand3.png) left bottom no-repeat;
 }
 
+/* ============================= department ====================== */
 #department {
   position: relative;
   background: #fff;
-  padding: 70px 0 90px;
+  padding: 50px 0 70px;
 }
-
 .department1 {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
 }
 .department1 figure {
   position: relative;
   display: inline-block;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 .department1 .caption {
   font-family: "Montserrat";
@@ -1011,16 +1107,16 @@ header {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-
 .yjsg-round-progress {
-  width: 155px;
-  height: 155px;
-  font-size: 15px;
+  width: 140px;
+  height: 140px;
+  font-size: 14px;
   color: #232323;
   border-top-color: #000;
   border-bottom-color: transparent;
 }
 
+/* ============================= what we offer ====================== */
 #what_wrapper {
   position: relative;
   background: #f7f8f9;
@@ -1037,10 +1133,11 @@ header {
   width: 50%;
   background: url(http://placehold.it/959x741) center center no-repeat;
   background-size: cover;
+  image-rendering: optimizeSpeed;
   vertical-align: middle;
 }
 #what .left_box {
-  padding: 110px;
+  padding: 80px 30px;
 }
 #what .left_box_inner {
 }
@@ -1052,17 +1149,15 @@ header {
   vertical-align: middle;
 }
 #what .right_box {
-  padding: 70px;
+  padding: 50px 30px;
 }
 #what .right_box_inner {
-  margin-left: -20px;
-  margin-right: -20px;
+  margin-left: -15px;
+  margin-right: -15px;
 }
-
 .what1 {
-  background: #35373e;
   background: rgba(53, 55, 62, 0.6);
-  padding: 50px;
+  padding: 40px;
   text-align: center;
   color: #fff;
 }
@@ -1070,34 +1165,33 @@ header {
   margin-bottom: 10px;
 }
 .what1 .ic1 i {
-  font-size: 35px;
+  font-size: 30px;
   line-height: 1;
 }
 .what1 .txt1 {
   font-family: "Montserrat";
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 .what1 .txt2 {
-  font-size: 16px;
-  padding-bottom: 20px;
+  font-size: 14px;
+  padding-bottom: 15px;
 }
-
 .what2 {
   position: relative;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .what2 a {
   display: block;
   text-decoration: none;
   border: 2px solid transparent;
-  padding: 20px;
-  transition: all 0.3s ease-out;
+  padding: 15px;
+  transition: border-color 0.3s ease-out;
 }
 .what2 a:hover {
   border-color: #35373e;
@@ -1105,13 +1199,13 @@ header {
 .what2 a .ic1 {
   margin-bottom: 10px;
   color: #6e6e6f;
-  transition: all 0.3s ease-out;
+  transition: color 0.3s ease-out;
 }
 .what2 a:hover .ic1 {
   color: #35373e;
 }
 .what2 a .ic1 i {
-  font-size: 35px;
+  font-size: 30px;
   line-height: 1;
 }
 .what2 a .txt1 {
@@ -1122,45 +1216,40 @@ header {
   text-transform: uppercase;
   letter-spacing: 2px;
   padding-bottom: 5px;
-  transition: all 0.3s ease-out;
+  transition: color 0.3s ease-out;
 }
 .what2 a:hover .txt1 {
   color: #35373e;
 }
 
+/* ============================= features ====================== */
 #features {
   position: relative;
   overflow: hidden;
   background: #fff;
-  padding: 80px 0 0px;
-}
-
-.features {
+  padding: 60px 0 0;
 }
 .features .left_box {
   text-align: right;
-  padding-top: 60px;
+  padding-top: 40px;
 }
 .features .right_box {
-  padding-top: 60px;
-}
-.features .center_box {
+  padding-top: 40px;
 }
 .features .center_box img {
   margin-left: auto;
   margin-right: auto;
 }
-
 .features1 {
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 .features1 .ic1 {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color: #000000;
 }
 .features1 .ic1 i {
-  font-size: 25px;
+  font-size: 22px;
   line-height: 1;
 }
 .features1 .txt1 {
@@ -1170,16 +1259,15 @@ header {
   color: #6e6e6f;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 .features1 .txt2 {
-  font-size: 19px;
+  font-size: 16px;
   line-height: 1.3;
 }
-
 .numbers1 {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   color: #fff;
 }
@@ -1188,13 +1276,13 @@ header {
   color: #fff;
 }
 .numbers1 .ic1 i {
-  font-size: 32px;
+  font-size: 28px;
   line-height: 1;
 }
 .numbers1 .txt1 {
   font-family: "Montserrat";
   font-weight: 700;
-  font-size: 32px;
+  font-size: 28px;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -1209,25 +1297,24 @@ header {
   letter-spacing: 2px;
 }
 
+/* ============================= difference ====================== */
 #difference {
   position: relative;
   background: #f7f8f9;
-  padding: 70px 0 50px;
-}
-
-.screen {
+  padding: 50px 0 40px;
 }
 .screen img {
   margin-left: auto;
   margin-right: auto;
+  max-width: 100%;
 }
 
+/* ============================= pricelist ====================== */
 #pricelist {
   position: relative;
   background: #fff;
-  padding: 70px 0 50px;
+  padding: 50px 0 40px;
 }
-
 .table1 {
   margin-bottom: 0;
 }
@@ -1238,9 +1325,9 @@ header {
 .table1 thead tr td {
   border: 1px solid #eeeeee;
   color: #999999;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  padding: 7px 12px;
+  padding: 7px 10px;
   vertical-align: middle;
   text-align: center;
 }
@@ -1259,20 +1346,18 @@ header {
 .table1 thead tr td:first-child + td {
   text-align: left;
 }
-
 .table1 tbody tr:nth-child(odd) {
   background: #fbfbfc;
 }
 .table1 tbody tr:hover {
   background: #f4f4f7;
 }
-
 .prices {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .prices a {
   display: block;
-  padding: 25px 0 50px;
+  padding: 20px 0 40px;
   text-decoration: none;
   background: #fff;
   border: 1px solid #f0f0f0;
@@ -1281,19 +1366,17 @@ header {
   transition: all 0.3s ease-out;
 }
 .prices a:hover {
-  background: #fff;
-  z-index: 5;
   transform: scale(1.02);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .prices a .prices_inner {
 }
 .prices a .txt1 {
-  font-size: 16px;
+  font-size: 14px;
   color: #35373e;
   font-family: "Montserrat";
   text-transform: uppercase;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   letter-spacing: 2px;
 }
 .prices a .c1 {
@@ -1312,35 +1395,34 @@ header {
 .prices a .txt2 {
   position: relative;
   display: block;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   margin-left: auto;
   margin-right: auto;
   background: #fff;
   border-radius: 50%;
-  font-size: 30px;
+  font-size: 24px;
   line-height: 1.2;
-  color: #fff;
-  border: 1px solid #e9eaeb;
   color: #35373e;
-  padding-top: 30px;
+  border: 1px solid #e9eaeb;
+  padding-top: 25px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .prices a .txt2 span {
   display: block;
   color: #777777;
-  font-size: 14px;
+  font-size: 12px;
 }
 .prices a ul {
   padding: 0;
-  margin: 0 0 40px;
+  margin: 0 0 30px;
   list-style: none;
 }
 .prices a ul li {
   display: block;
   border-bottom: 1px solid #f5f5f5;
   color: #999999;
-  padding: 15px 0;
+  padding: 10px 0;
 }
 .prices a .txt3 {
   display: inline-block;
@@ -1349,7 +1431,7 @@ header {
   letter-spacing: 2px;
   background: #fff;
   color: #35373e;
-  padding: 13px 40px;
+  padding: 10px 30px;
   border: 1px solid #e8e8e8;
   text-transform: uppercase;
   transition: all 0.3s ease-out;
@@ -1357,19 +1439,18 @@ header {
 .prices a:hover .txt3 {
   background: #000;
   color: #fff;
+  border-color: #000;
 }
 
+/* ============================= gallery ====================== */
 #gallery {
   position: relative;
   background: #f7f8f9;
-  padding: 70px 0 70px;
+  padding: 50px 0;
 }
 #gallery2 {
   position: relative;
   background: #eaeaea;
-}
-
-.gallery_wrapper {
 }
 .gallery_wrapper .gallery_row {
 }
@@ -1404,47 +1485,44 @@ header {
   right: auto;
   left: 0;
 }
-
 .gallery .caption {
   width: 50%;
   float: left;
-  padding: 20px 20px 0px 30px;
+  padding: 15px 15px 0 20px;
 }
 .gallery_right .caption {
   float: right;
 }
 .gallery .caption .txt1 {
-  font-size: 16px;
+  font-size: 14px;
   color: #141414;
   padding-bottom: 5px;
 }
 .gallery .caption .txt2 {
   font-family: "Montserrat";
-  font-size: 20px;
+  font-size: 18px;
   color: #141414;
   padding-bottom: 5px;
 }
 .gallery .caption .txt3 {
   font-family: "Montserrat";
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.3;
   color: #6f6f6f;
   padding-bottom: 5px;
 }
 
+/* ============================= tweets ====================== */
 #tweets_section {
   position: relative;
   background: #f7f8f9;
-  padding: 50px 0;
+  padding: 40px 0;
 }
-
-/* ============================= tweets ====================== */
 #tweets {
 }
-
 .tweets_pag {
   text-align: center;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 .tweets_pag a {
   display: inline-block;
@@ -1461,7 +1539,6 @@ header {
 .tweets_pag a span {
   display: none;
 }
-
 #tweets .carousel-box {
   position: relative;
 }
@@ -1476,7 +1553,7 @@ header {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  margin-right: -30px;
+  margin-right: -20px;
 }
 #tweets .caroufredsel_wrapper {
   padding: 0;
@@ -1489,14 +1566,11 @@ header {
 #tweets .carousel-box ul li {
   float: left;
   display: inline-block;
-  padding: 0px 0px 0px 0px;
+  padding: 0;
   position: relative;
-  width: 300px;
+  width: 280px;
   overflow: hidden;
-  padding-right: 30px;
-}
-
-.tweets {
+  padding-right: 20px;
 }
 .tweets .tweets_inner {
   text-align: center;
@@ -1505,55 +1579,50 @@ header {
 }
 .tweets .tweets_inner .c1 {
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: none;
   border: 1px solid #060606;
   margin-left: auto;
   margin-right: auto;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .tweets .tweets_inner .c1 i {
   color: #000000;
-  font-size: 20px;
-  line-height: 48px;
+  font-size: 18px;
+  line-height: 38px;
 }
 .tweets .tweets_inner .txt1 {
   font-family: "Amiri";
-  font-size: 19px;
+  font-size: 16px;
   color: #777777;
 }
-
-/* ============================= tweets end ====================== */
 
 /* ============================= footer ====================== */
 .bot1 {
   position: relative;
   background: #111111;
-  padding: 60px 0 30px;
+  padding: 50px 0 20px;
   color: #999999;
 }
 .bot1 a {
   color: #999999;
 }
-
 .logo2_wrapper {
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
-
 .bot_title {
   text-transform: uppercase;
   font-family: "Montserrat";
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: #fff;
   letter-spacing: 2px;
-  padding-top: 25px;
-  padding-bottom: 45px;
+  padding-top: 20px;
+  padding-bottom: 30px;
 }
-
 .social {
   display: block;
   margin: 0;
@@ -1563,15 +1632,15 @@ header {
 .social li {
   display: inline-block;
   margin: 0 1px;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
 }
 .social li a {
   display: block;
   text-decoration: none;
-  font-size: 11px;
+  font-size: 10px;
   color: #aaaaaa;
-  line-height: 33px;
+  line-height: 28px;
   text-align: center;
   background: none;
   border: 1px solid #858585;
@@ -1579,13 +1648,11 @@ header {
 }
 .social li a:hover {
   color: #fff;
-  background: none;
   border: 1px solid #fff;
 }
 .social li a i {
   line-height: inherit;
 }
-
 .social2 {
   display: block;
   margin: 0;
@@ -1595,15 +1662,15 @@ header {
 .social2 li {
   display: inline-block;
   margin: 0 1px;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
 }
 .social2 li a {
   display: block;
   text-decoration: none;
-  font-size: 11px;
+  font-size: 10px;
   color: #676666;
-  line-height: 33px;
+  line-height: 28px;
   text-align: center;
   background: none;
   border: 1px solid #676666;
@@ -1617,7 +1684,6 @@ header {
 .social2 li a i {
   line-height: inherit;
 }
-
 .bot_menu {
   padding: 0;
   margin: 0;
@@ -1634,16 +1700,15 @@ header {
   color: #fff;
   text-decoration: underline;
 }
-
 .smallicons {
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 .smallicons i {
   float: left;
   padding-right: 10px;
   color: #999999;
-  font-size: 20px;
-  min-width: 35px;
+  font-size: 18px;
+  min-width: 30px;
 }
 .smallicons span {
   display: table;
@@ -1652,12 +1717,11 @@ header {
   color: #999999;
   text-decoration: none;
 }
-
 .bot2 {
   position: relative;
   background: #111111;
   border-top: 1px solid #4b4b4b;
-  padding: 20px 0;
+  padding: 15px 0;
   font-size: 10px;
   font-family: "Montserrat";
   text-transform: uppercase;
@@ -1672,15 +1736,14 @@ header {
   position: relative;
   overflow: hidden;
   background: none;
-  padding-top: 110px;
-  padding-bottom: 80px;
+  padding-top: 80px;
+  padding-bottom: 60px;
 }
 .parallax,
 .parallax .parallax-content,
 .parallax .overlay {
   height: 100%;
 }
-
 .parallax-bg {
   width: 100%;
   height: 100%;
@@ -1701,164 +1764,13 @@ header {
   width: 100%;
   position: absolute;
   overflow: hidden;
-  background: none;
   left: 0;
   top: 0;
 }
 .parallax .container {
 }
-
 .bg1 {
   background-image: url(http://placehold.it/1920x1118);
-}
-
-/* ============================= main menu ====================== */
-.navbar_ {
-  margin: 0;
-  padding-top: 40px;
-  background: none;
-  border: none;
-  position: relative;
-  z-index: 30;
-  min-height: 0;
-  float: right;
-  text-align: center;
-}
-.navbar_ .navbar-toggle {
-  background: #161616;
-  border: none;
-  box-shadow: none;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  margin-right: 5px;
-}
-.navbar_ .navbar-toggle:hover,
-.navbar_ .navbar-toggle:focus {
-  background: #303030;
-}
-.navbar_ .navbar-toggle .icon-bar {
-  background: #fff;
-}
-.navbar-collapse_ {
-  padding-left: 0;
-  padding-right: 0;
-  border: none;
-}
-.navbar_ .nav {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  vertical-align: top;
-  float: none;
-}
-.navbar_ .nav > li {
-  position: relative;
-  display: block;
-  float: left;
-  white-space: nowrap;
-  background: none;
-  margin-left: 45px;
-}
-.navbar_ .nav > li:first-child {
-  margin-left: 0;
-}
-.navbar_ .nav > li > a {
-  display: block;
-  text-decoration: none;
-  background: none;
-  font-family: "Montserrat";
-  font-weight: 700;
-  font-size: 11px;
-  line-height: 20px;
-  color: #fff;
-  text-shadow: none;
-  padding: 10px 0px;
-  border: none;
-  margin: 0;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: all 0.3s ease-out;
-}
-
-.navbar_ .nav > li > a em {
-  display: inline-block;
-  width: 7px;
-  height: 5px;
-  background: url(../images/caret1.png) center center no-repeat;
-  margin-left: 10px;
-  margin-right: 0px;
-  vertical-align: middle;
-}
-
-.navbar_ .nav > li > a:hover,
-.navbar_ .nav > li > a:focus,
-.navbar_ .nav > li.sfHover > a,
-.navbar_ .nav > li.sfHover > a:hover,
-.navbar_ .nav > li.active > a,
-.navbar_ .nav > li.active > a:hover,
-.navbar_ .nav > li.active > a:focus {
-  color: #fff;
-  text-decoration: underline;
-  box-shadow: none;
-  border-radius: 0;
-  background: none;
-}
-
-.sub-menu ul {
-  position: absolute;
-  display: none;
-  left: 0;
-  top: 100%;
-  list-style: none;
-  z-index: 1;
-  margin: 0;
-  padding: 0;
-  background: #3e3e40;
-  text-align: left;
-  border: none;
-}
-.sub-menu li {
-  margin: 0;
-  position: relative;
-  display: block;
-  border-top: 1px solid #515152;
-}
-.sub-menu li:first-child {
-  border-top: none;
-}
-.sub-menu li a {
-  display: block;
-  position: relative;
-  font-family: "Montserrat";
-  font-weight: 700;
-  font-size: 11px;
-  line-height: 20px;
-  color: #fff;
-  text-decoration: none;
-  padding: 3px 40px 3px 10px;
-  background: none;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: all 0.3s ease-out;
-}
-.sub-menu li a:hover {
-  text-decoration: none;
-  color: #000;
-  background: #fff;
-}
-
-.sub-menu-1 > ul {
-}
-
-.sub-menu-2 > ul {
-  left: 100%;
-  top: 0px;
-  margin-left: 0px;
-  background: #3e3e40;
 }
 
 /* ============================= search-form ====================== */
@@ -1867,7 +1779,7 @@ header {
 }
 .search-form-wrapper .form-control {
   border: 1px solid #b4b4b4;
-  border-radius: 0px;
+  border-radius: 0;
   padding-top: 9px;
   padding-bottom: 9px;
   height: 40px;
@@ -1904,16 +1816,16 @@ header {
   right: 10px;
   z-index: 1000;
   overflow: hidden;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border: none;
   text-indent: 100%;
   background: url(../images/totop.gif) no-repeat left top;
 }
 #toTopHover {
   background: url(../images/totop.gif) no-repeat left bottom;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: block;
   overflow: hidden;
   float: left;
@@ -1930,53 +1842,49 @@ header {
   color: #35373e;
   font-weight: 700;
   font-family: "Montserrat";
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1;
   text-transform: uppercase;
-  padding-top: 20px;
-  padding-bottom: 30px;
-  margin-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 25px;
+  margin-bottom: 10px;
   background: url(../images/kand1.png) center bottom no-repeat;
   letter-spacing: 2px;
 }
-
 .title2 {
   text-align: center;
   color: #777777;
-  font-size: 19px;
-  margin-bottom: 15px;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
-
 .title3 {
   text-align: left;
   color: #35373e;
   font-weight: 700;
   font-family: "Montserrat";
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1;
   text-transform: uppercase;
-  padding-top: 0px;
-  padding-bottom: 30px;
-  margin-bottom: 15px;
+  padding-top: 0;
+  padding-bottom: 25px;
+  margin-bottom: 10px;
   background: url(../images/kand4.png) left bottom no-repeat;
   letter-spacing: 2px;
 }
-
 h2 {
   display: block;
   font-family: "Montserrat";
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   color: #232323;
   line-height: 1;
-  padding: 20px;
+  padding: 15px;
   margin: 0;
   position: relative;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 2px;
 }
-
 h5 {
   display: block;
   font-family: "Montserrat";
@@ -1984,38 +1892,32 @@ h5 {
   font-size: 11px;
   color: #525252;
   line-height: 1;
-  padding: 0px 0 10px;
+  padding: 0 0 10px;
   margin: 0;
   position: relative;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-
 .img-responsive-old {
   display: block;
   max-width: 100%;
   height: auto;
 }
-
 .img-responsive {
   width: auto \9;
 }
-
 .border-box {
   box-sizing: border-box;
 }
-
-/* === */
 .hl2 {
   border-top: 1px solid #eeeeee;
-  margin-top: 15px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
-
 .hl3 {
   border-top: 1px solid #eeeeee;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /*-----btn-----*/
@@ -2027,23 +1929,21 @@ h5 {
   font-size: 12px;
   line-height: 20px;
   font-weight: 700;
-  padding: 12px 20px;
+  padding: 10px 20px;
   text-decoration: none;
-  border-radius: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  border-radius: 0;
+  margin: 5px;
   text-transform: uppercase;
   background: none;
   position: relative;
   border: 3px solid #fff;
   letter-spacing: 1px;
-  margin: 0 5px;
+  z-index: 10;
 }
 .btn-default.btn0:hover {
   color: #000;
   background: #fff;
 }
-
 .btn-default.btn1 {
   font-family: "Montserrat";
   display: inline-block;
@@ -2054,20 +1954,19 @@ h5 {
   font-weight: 700;
   padding: 8px 20px;
   text-decoration: none;
-  border-radius: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  border-radius: 0;
+  margin: 5px 0;
   text-transform: uppercase;
   background: none;
   position: relative;
   border: 2px solid #fff;
   letter-spacing: 1px;
+  z-index: 10;
 }
 .btn-default.btn1:hover {
   color: #000;
   background: #fff;
 }
-
 .btn-default.btn2 {
   font-family: "Montserrat";
   display: inline-block;
@@ -2078,19 +1977,18 @@ h5 {
   font-weight: 700;
   padding: 0 30px 0 0;
   text-decoration: none;
-  border-radius: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  border-radius: 0;
+  margin: 5px 0;
   text-transform: uppercase;
   background: url(../images/btn2.png) right center no-repeat;
   position: relative;
   letter-spacing: 1px;
+  z-index: 10;
 }
 .btn-default.btn2:hover {
   color: #000;
   text-decoration: underline;
 }
-
 .btn-default.btn3 {
   font-family: "Montserrat";
   display: inline-block;
@@ -2101,14 +1999,14 @@ h5 {
   font-weight: 700;
   padding: 2px 15px;
   text-decoration: none;
-  border-radius: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  border-radius: 0;
+  margin: 5px 0;
   text-transform: uppercase;
   background: none;
   position: relative;
   border: 2px solid #4c4b4b;
   letter-spacing: 1px;
+  z-index: 10;
 }
 .btn-default.btn3:hover {
   color: #fff;
@@ -2124,23 +2022,21 @@ h5 {
   border: 1px solid #cfcfcf;
   box-shadow: none;
 }
-
 .thumbnail .caption {
   padding: 0;
   color: inherit;
 }
-
 .thumb1 {
-  margin-bottom: 0px;
-  margin-top: 0px;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 .thumb1.last {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 .thumb1 .thumbnail {
   padding: 0;
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: none;
   margin-bottom: 0;
   background: none;
@@ -2148,7 +2044,7 @@ h5 {
 .thumb1 figure {
   margin: 0;
   float: left;
-  margin: 0px 20px 20px 0px;
+  margin: 0 15px 15px 0;
 }
 .thumb1 figure img {
   width: auto;
@@ -2190,7 +2086,6 @@ h5 {
   text-align: left;
   padding-bottom: 10px;
 }
-
 #ajax-contact-form .form-group {
   margin-left: 0;
   margin-right: 0;
@@ -2208,7 +2103,7 @@ h5 {
   line-height: 20px;
   background: #fff;
   border: 1px solid #f4f4f4;
-  border-radius: 0px;
+  border-radius: 0;
   font-style: italic;
 }
 #ajax-contact-form .form-control:focus {
@@ -2232,12 +2127,10 @@ h5 {
   width: 170px;
   height: 38px;
 }
-
 #ajax-contact-form .checkbox {
   font-style: italic;
   padding-bottom: 15px;
 }
-
 #ajax-contact-form #inputName {
   background: url(../images/n1.png) right center no-repeat #fff;
 }
@@ -2250,7 +2143,6 @@ h5 {
 #ajax-contact-form #inputMessage {
   background: url(../images/m1.png) right 15px no-repeat #fff;
 }
-
 .btn-default.btn-cf-submit {
   display: inline-block;
   background: none;
@@ -2261,7 +2153,7 @@ h5 {
   font-weight: 700;
   padding: 10px 20px;
   text-decoration: none;
-  border-radius: 0px;
+  border-radius: 0;
   border: 2px solid #232323;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -2283,7 +2175,6 @@ h5 {
   text-align: left;
   padding-bottom: 10px;
 }
-
 #ajax-contact-form3 .form-group {
   margin-left: 0;
   margin-right: 0;
@@ -2301,7 +2192,7 @@ h5 {
   color: #8c8c8c;
   background: #fff;
   border: 1px solid #dedede;
-  border-radius: 0px;
+  border-radius: 0;
 }
 #ajax-contact-form3 .form-control:focus {
   border-color: #000000;
@@ -2324,7 +2215,6 @@ h5 {
   width: 170px;
   height: 38px;
 }
-
 .btn-default.btn-cf-submit3 {
   display: block;
   background: none;
@@ -2335,12 +2225,10 @@ h5 {
   font-weight: 700;
   padding: 7px 15px;
   text-decoration: none;
-  border-radius: 0px;
-  border: none;
-  letter-spacing: 2px;
-  background: #fff;
+  border-radius: 0;
   border: 2px solid #4c4b4b;
   text-transform: uppercase;
+  letter-spacing: 2px;
   transition: all 0.3s ease-out;
 }
 .btn-default.btn-cf-submit3:hover {
@@ -2350,194 +2238,121 @@ h5 {
 }
 
 /*----- media queries ------*/
-/* Large desktop */
 @media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
 }
-
-/* Default landscape and desktop to large desktop */
 @media (max-width: 1199px) {
   .navbar_ .nav > li {
-    margin-left: 40px;
+    margin-left: 20px;
   }
-
   .mission .mission_inner .txt1 {
-    font-size: 45px;
+    font-size: 40px;
   }
-
   .front-slider {
-    margin-top: -90px;
+    margin-top: -70px;
   }
-
-  #what {
-    display: block;
-  }
-  #what .left_box_wrapper {
-    display: block;
-    width: auto;
-  }
-  #what .right_box_wrapper {
-    display: block;
-    width: auto;
-  }
-
   #what .left_box {
-    padding: 70px;
+    padding: 60px 20px;
   }
-
+  #what .right_box {
+    padding: 40px 20px;
+  }
   .gallery {
     width: auto;
     float: none;
   }
-
   .gallery .caption {
-    padding: 50px 50px 10px;
+    padding: 20px;
   }
-
-  .gallery.nav2 figure {
-    float: right;
+  .gallery.nav2 figure, .gallery.nav3 figure {
+    float: none;
+    width: 100%;
   }
-  .gallery.nav2 figure em {
-    background-image: url(../images/arrow2.png);
-    right: auto;
-    left: 0;
-  }
-  .gallery.nav2 .caption {
-    float: right;
-  }
-
-  .gallery.nav3 figure {
-    float: left;
-  }
-  .gallery.nav3 figure em {
-    background-image: url(../images/arrow1.png);
-    right: 0;
-    left: auto;
-  }
-  .gallery.nav3 .caption {
-    float: left;
+  .gallery.nav2 .caption, .gallery.nav3 .caption {
+    float: none;
+    width: 100%;
   }
 }
-
-@media (min-width: 992px) {
-}
-
 @media (min-width: 992px) and (max-width: 1199px) {
-  .features .left_box {
+  .features .left_box, .features .right_box {
     padding-top: 30px;
   }
-  .features .right_box {
-    padding-top: 30px;
-  }
-
   .features1 {
     margin-bottom: 30px;
   }
-  .features1 .ic1 {
-    margin-bottom: 10px;
-  }
-  .features1 .txt1 {
-    padding-bottom: 10px;
-  }
 }
-
-/* Portrait tablet to landscape and desktop */
 @media (max-width: 991px) {
   .navbar_ .nav > li {
-    margin-left: 10px;
+    margin-left: 15px;
   }
-
   .mission .mission_inner .txt1 {
-    font-size: 35px;
+    font-size: 32px;
   }
   .mission .mission_inner .txt2 {
-    font-size: 18px;
+    font-size: 16px;
   }
-
   .front-slider {
-    margin-top: -80px;
+    margin-top: -60px;
   }
-
-  #services2 {
-    display: block;
-  }
-  #services2 .left_box_wrapper {
+  #services2 .left_box_wrapper, #services2 .right_box_wrapper {
     display: block;
     width: auto;
-  }
-  #services2 .right_box_wrapper {
-    display: block;
-    width: auto;
-    padding-bottom: 70%;
   }
   #services2 .left_box {
-    padding: 50px 30px;
+    padding: 40px 20px;
+  }
+  #services2 .right_box_wrapper {
+    padding-bottom: 50%;
   }
 }
-
 @media (min-width: 768px) and (max-width: 991px) {
-  .features .left_box {
-    padding-top: 0px;
+  .features .left_box, .features .right_box {
+    padding-top: 20px;
   }
-  .features .right_box {
-    padding-top: 0px;
-  }
-
   .features1 {
     margin-bottom: 20px;
   }
-  .features1 .ic1 {
-    margin-bottom: 5px;
-  }
-  .features1 .txt1 {
-    padding-bottom: 5px;
-  }
   .features1 .txt2 {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
-
-/* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
   .navbar_ {
     float: none;
-    height: 40px;
+    height: auto;
     margin-bottom: 0;
+    padding-top: 10px;
   }
   .navbar-collapse_ {
     clear: both;
-    margin-left: -15px;
-    margin-right: -15px;
-    padding-top: 14px;
-    box-shadow: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 10px;
+    background: #3e3e40;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 100%;
   }
   .navbar_ .nav {
     display: block;
-    background: none;
-    border-right: none;
-    background: #3e3e40;
-    border: none;
   }
   .navbar_ .nav > li {
     float: none;
-    background: none;
-    border-left: none;
-    margin-right: 0;
-    border-top: 1px solid #515152;
-    background: none;
-    padding-left: 0;
     margin-left: 0;
+    border-top: 1px solid #515152;
   }
   .navbar_ .nav > li > a {
-    padding: 10px;
-    border: none;
-    color: #fff;
+    padding: 10px 15px;
+    text-align: left;
   }
   .sub-menu ul {
     position: relative;
     left: 0;
     top: 0;
   }
-
   .mission .mission_inner .txt1 {
     font-size: 24px;
   }
@@ -2552,96 +2367,61 @@ h5 {
     height: 60px;
     margin-top: -30px;
   }
-
   .front-slider {
-    margin-top: -60px;
-  }
-
-  .services2:before {
-    display: none;
-  }
-  .services2:after {
-    display: block !important;
-  }
-
-  #what .left_box {
-    padding: 30px;
-  }
-  #what .right_box {
-    padding: 30px;
+    margin-top: -50px;
   }
   #what .left_box_wrapper, #what .right_box_wrapper {
     display: block;
     width: 100%;
   }
-
-  .features .left_box {
-    text-align: center;
-    padding-top: 0;
-  }
-  .features .right_box {
-    text-align: center;
-    padding-top: 0;
-  }
-
-  .gallery {
-    margin-bottom: 20px;
-  }
-  .gallery figure {
-    float: none;
-    width: auto;
-  }
-  .gallery figure em {
-    display: none;
-  }
-  .gallery .caption {
-    float: none;
-    width: auto;
+  #what .left_box, #what .right_box {
     padding: 20px;
   }
-
-  .content-part {
-    padding-bottom: 25px;
-  }
-
-  .sidebar-part {
-    padding-bottom: 25px;
-  }
-
-  .title1 {
-    font-size: 18px;
-    padding-bottom: 20px;
-  }
-  .title3 {
-    font-size: 18px;
-    padding-bottom: 20px;
-  }
-
   .what1 {
-    padding: 30px;
+    padding: 20px;
   }
   .what1 .ic1 i {
-    font-size: 28px;
+    font-size: 24px;
   }
   .what1 .txt1 {
-    font-size: 14px;
+    font-size: 12px;
   }
   .what1 .txt2 {
-    font-size: 14px;
+    font-size: 12px;
   }
-
   .what2 a {
-    padding: 15px;
+    padding: 10px;
   }
   .what2 a .ic1 i {
-    font-size: 28px;
+    font-size: 24px;
   }
   .what2 a .txt1 {
     font-size: 10px;
   }
-
-  .about1 {
+  .features .left_box, .features .right_box {
+    text-align: center;
+    padding-top: 0;
+  }
+  .gallery {
+    margin-bottom: 15px;
+  }
+  .gallery figure, .gallery .caption {
+    float: none;
+    width: auto;
+    padding: 10px;
+  }
+  .gallery figure em {
+    display: none;
+  }
+  .content-part, .sidebar-part {
     padding-bottom: 20px;
+  }
+  .title1, .title3 {
+    font-size: 16px;
+    padding-bottom: 15px;
+  }
+  .about1 {
+    padding-bottom: 15px;
   }
   .about1 a .txt1 {
     font-size: 10px;
@@ -2649,40 +2429,39 @@ h5 {
   .about1 .txt2 {
     font-size: 12px;
   }
-
   .bot2 {
-    padding: 15px 0;
+    padding: 10px 0;
     font-size: 8px;
   }
-
   .container {
     padding-left: 10px;
     padding-right: 10px;
   }
-
   .btn-default.btn0 {
     font-size: 10px;
     padding: 8px 15px;
-    margin: 0 3px;
+    margin: 3px;
   }
   .btn-default.btn1 {
     font-size: 9px;
     padding: 6px 15px;
   }
+  #ajax-contact-form .form-group.capthca input,
+  #ajax-contact-form .form-group.img img {
+    width: 140px;
+  }
+  #ajax-contact-form3 .form-group.capthca input,
+  #ajax-contact-form3 .form-group.img img {
+    width: 140px;
+  }
 }
-
-@media (min-width: 481px) and (max-width: 767px) {
-}
-
 @media (max-width: 480px) {
   #google_map {
     height: 240px;
   }
-
   .front-slider {
-    margin-top: -30px;
+    margin-top: -40px;
   }
-
   .mission .mission_inner .txt1 {
     font-size: 20px;
   }
@@ -2691,42 +2470,36 @@ h5 {
     height: 50px;
     margin-top: -25px;
   }
-
   .what1 {
-    padding: 20px;
+    padding: 15px;
   }
   .what1 .txt1 {
-    font-size: 12px;
+    font-size: 11px;
   }
   .what1 .txt2 {
-    font-size: 12px;
+    font-size: 11px;
   }
-
   .bot2 {
-    padding: 10px 0;
+    padding: 8px 0;
   }
 }
-
 #form-errors {
   color: #f00;
   padding-bottom: 10px;
-  margin-left: 20px;
+  margin-left: 15px;
 }
 #ajax-contact-form-status {
   color: #000;
   padding-block: 10px;
-  margin-left: 20px;
+  margin-left: 15px;
 }
-
 .boats-page-slug #top2 {
   background: rgba(0, 0, 0, 0.5);
 }
-
 .is-sticky h1 {
   display: none;
 }
-
 .text-outline {
   color: white;
-  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
